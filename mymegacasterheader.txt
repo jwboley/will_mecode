@@ -1,0 +1,21 @@
+DVAR $hFile
+DVAR $cCheck
+DVAR $press
+DVAR $length
+DVAR $lame
+DVAR $comport
+DVAR $linepressure
+
+
+$DO0.0=0
+$DO1.0=0
+$DO2.0=0
+$DO3.0=0
+
+#include "C:\Documents and Settings\RoboMonster\Desktop\Alex_CONTROL_press_only.PGM"
+
+METRIC; megacaster sets primary units as mm
+SECOND; megacaster sets primary units as s
+G65 F2000; accel speed mm/s^2
+G66 F2000;accel speed mm/s^2
+

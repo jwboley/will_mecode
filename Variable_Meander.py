@@ -28,7 +28,7 @@ yl = 3*2.54*10-2*margin #2" by 3" slide
 x0 = margin
 y0 = 2*margin+yl
  
-n = 4 #number of lines for each spacing
+
 
 g.set_pressure(com_press, pressure)
 g.feed(vps_high)
@@ -38,10 +38,10 @@ g.feed(vps)
 g.abs_move(z = h0)
 g.toggle_pressure(com_press)
 g.dwell(pdwell)
-    
-    #test
-    
-def s_meander(n,xl,p):
+  
+  
+n = 4 #number of lines for each unit meander  
+def unit_meander(n,xl,p):
     for i in range(n):
         if i%2 == 0:
             c = 'CW'
@@ -53,6 +53,18 @@ def s_meander(n,xl,p):
         g.move(x = sense*(xl-p/2))
         g.arc(x = 0, y = -p, radius = p/2, direction = c)
 
-s_meander(n = n, xl = xl, p = 1.0)#calls meander function
+p0 = 9.8 #pitch for first unit meander
+pN = 0.2 #pitch for Nth unit meander
+r = (yl-n*p0)/(yl-n*pN) #factor reduction for spacing of subsequent meanders
+N = int(np.rint(np.log(pN/p0)/np.log(r))) #total number of unit meanders
+p0 = pN/np.power(r,N) #redefine p0 to account for rounding error
+
+def meta_meander(xl,n,N,r,p0):
+    for i in range(N):
+        pi = p0*np.power(r,i)
+        unit_meander(n=n,xl=xl,p=pi)
+        
+        
+meta_meander(xl=xl,n=n,N=N,r=r,p0=p0) 
 g.view(backend = 'matplotlib')#plot print path
 g.teardown()#ends the script (never comment out)

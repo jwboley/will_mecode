@@ -4,13 +4,13 @@ import numpy as np
 g = G(
       direct_write = False,
       ### When Editing On Megacaster ###
-      outfile = r'\\seasfs02.rc.fas.harvard.edu\jlewis_lab\User Files\Boley\Print_Routines\Variable_Speed_Meander.pgm',
-      header = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterheader.txt',
-      footer = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterfooter.txt',
+      #outfile = r'\\seasfs02.rc.fas.harvard.edu\jlewis_lab\User Files\Boley\Print_Routines\Variable_Speed_Meander.pgm',
+      #header = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterheader.txt',
+      #footer = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterfooter.txt',
       ### When Editing On Laptop ###
-      #outfile = r'/Users/jwboley/Documents/will_mecode/Variable_Speed_Meander.pgm',
-      #header = r'/Users/jwboley/Documents/will_mecode/mymegacasterheader.txt',
-      #footer = r'/Users/jwboley/Documents/will_mecode/mymegacasterfooter.txt',
+      outfile = r'/Users/jwboley/Documents/will_mecode/Variable_Speed_Meander.pgm',
+      header = r'/Users/jwboley/Documents/will_mecode/mymegacasterheader.txt',
+      footer = r'/Users/jwboley/Documents/will_mecode/mymegacasterfooter.txt',
       print_lines = False,
       aerotech_include=False,
       )
@@ -19,7 +19,7 @@ g = G(
 #Move printhead to desired starting location (X,Y, and Z) before printing
 
 margin = 0 #set up margins from edge of slide
-#xl = 2*2.54*10 #2" by 3" slide
+xl = 2*2.54*10 #2" by 3" slide
 yl = 3*2.54*10 #2" by 3" slide
 
 
@@ -38,22 +38,22 @@ def unit_meander(n,xl,p,v,ctr,q):
     while i < n:
         if (ctr*n+i)%2 == 0:
             c = 'CW'
-            g.abs_move(x = xl - margin)
+            g.abs_move(x = 2*xl - margin)
             g.arc(x = 0, y = -p, radius = p/2, direction = c)
         else:
             c = 'CCW'
-            g.abs_move(x = margin)
+            g.abs_move(x = xl + margin)
             g.arc(x = 0, y = -p, radius = p/2, direction = c)
         i += 1
         
-p = 4.0 #pitch between meanders in mm
+p = 4.5 #pitch between meanders in mm
 N = 4 #total number of unit meanders
 d = 0.2 #inner diameter of nozzle in mm
 v0 = 10 #speed for first unit meander in mm/s
-vN = 0.01 #speed for Nth unit meander in mm/s
+vN = 0.05 #speed for Nth unit meander in mm/s
 alpha = np.power((vN/v0),1.0/(N-1))
-tl = 8 #maximum allowable print time for the slowest trace in minutes
-xl = tl*60*vN
+tl = 5 #maximum allowable print time for the slowest trace in minutes
+xl = min([xl,tl*60*vN])
 
 def meta_meander(xl,N,n,p0,v0,alpha,d):
     j = 0

@@ -4,13 +4,13 @@ import numpy as np
 g = G(
       direct_write = False,
       ### When Editing On Megacaster ###
-      #outfile = r'\\seasfs02.rc.fas.harvard.edu\jlewis_lab\User Files\Boley\Print_Routines\Variable_Speed_Meander.pgm',
-      #header = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterheader.txt',
-      #footer = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterfooter.txt',
+      outfile = r'\\seasfs02.rc.fas.harvard.edu\jlewis_lab\User Files\Boley\Print_Routines\Variable_Speed_Meander.pgm',
+      header = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterheader.txt',
+      footer = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterfooter.txt',
       ### When Editing On Laptop ###
-      outfile = r'/Users/jwboley/Documents/will_mecode/Variable_Speed_Meander.pgm',
-      header = r'/Users/jwboley/Documents/will_mecode/mymegacasterheader.txt',
-      footer = r'/Users/jwboley/Documents/will_mecode/mymegacasterfooter.txt',
+      #outfile = r'/Users/jwboley/Documents/will_mecode/Variable_Speed_Meander.pgm',
+      #header = r'/Users/jwboley/Documents/will_mecode/mymegacasterheader.txt',
+      #footer = r'/Users/jwboley/Documents/will_mecode/mymegacasterfooter.txt',
       print_lines = False,
       aerotech_include=False,
       )
@@ -63,6 +63,8 @@ def meta_meander(xl,N,n,p0,v0,alpha,d):
         unit_meander(n=n,xl=xl,p=p0,v=v,ctr=j,q=q)
         j += 1
 
-meta_meander(xl=xl,N=N,n=n,p0=p,v0=v0,alpha=alpha,d=d) 
+meta_meander(xl=xl,N=N,n=n,p0=p,v0=v0,alpha=alpha,d=d)
+g.feed(v0)
+g.abs_move(x = 2*xl+5.0) 
 g.view(backend = 'matplotlib')#plot print path
 g.teardown()#ends the script (never comment out)

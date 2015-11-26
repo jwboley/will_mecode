@@ -4,13 +4,13 @@ import numpy as np
 g = G(
       direct_write = False,
       ### When Editing On Megacaster ###
-      #outfile = r'\\seasfs02.rc.fas.harvard.edu\jlewis_lab\User Files\Boley\Print_Routines\Variable_Speed_Meander.pgm',
-      #header = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterheader.txt',
-      #footer = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterfooter.txt',
+      outfile = r'\\seasfs02.rc.fas.harvard.edu\jlewis_lab\User Files\Boley\Print_Routines\Variable_Speed_Meander.pgm',
+      header = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterheader.txt',
+      footer = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterfooter.txt',
       ### When Editing On Laptop ###
-      outfile = r'/Users/jwboley/Documents/will_mecode/Variable_Speed_Meander.pgm',
-      header = r'/Users/jwboley/Documents/will_mecode/mymegacasterheader.txt',
-      footer = r'/Users/jwboley/Documents/will_mecode/mymegacasterfooter.txt',
+      #outfile = r'/Users/jwboley/Documents/will_mecode/Variable_Speed_Meander.pgm',
+      #header = r'/Users/jwboley/Documents/will_mecode/mymegacasterheader.txt',
+      #footer = r'/Users/jwboley/Documents/will_mecode/mymegacasterfooter.txt',
       print_lines = False,
       aerotech_include=False,
       )
@@ -49,10 +49,10 @@ def unit_meander(n,xl,p,v,ctr,q):
 p = 4.2 #pitch between meanders in mm
 N = 4 #total number of unit meanders
 d = 0.2 #inner diameter of nozzle in mm
-v0 = 0.05 #speed for first unit meander in mm/s
-vN = 10 #speed for Nth unit meander in mm/s
+v0 = 0.1 #speed for first unit meander in mm/s
+vN = 1.5 #speed for Nth unit meander in mm/s
 alpha = np.power((vN/v0),1.0/(N-1))
-tl = 3 #maximum allowable print time for the slowest trace in minutes
+tl = 2 #maximum allowable print time for the slowest trace in minutes
 xl = min([xl,tl*60*v0])
 
 def meta_meander(xl,N,n,p0,v0,alpha,d):

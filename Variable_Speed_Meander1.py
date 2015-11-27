@@ -50,7 +50,7 @@ p = 4.2 #pitch between meanders in mm
 N = 4 #total number of unit meanders
 d = 0.2 #inner diameter of nozzle in mm
 v0 = 0.1 #speed for first unit meander in mm/s
-vN = 1.5 #speed for Nth unit meander in mm/s
+vN = 1.2 #speed for Nth unit meander in mm/s
 alpha = np.power((vN/v0),1.0/(N-1))
 tl = 2 #maximum allowable print time for the slowest trace in minutes
 xl = min([xl,tl*60*v0])
@@ -60,12 +60,12 @@ def meta_meander(xl,N,n,p0,v0,alpha,d):
     while j < N:
         v = v0*np.power(alpha,j)
         q = np.pi/4*v*np.power(d*np.power(10,-3),2)#flow rate in m^3/s
-        g.dwell(3)
+        g.dwell(1)
         unit_meander(n=n,xl=xl,p=p0,v=v,ctr=j,q=q)
         j += 1
 
 meta_meander(xl=xl,N=N,n=n,p0=p,v0=v0,alpha=alpha,d=d)
-g.feed(v0)
+g.feed(vN)
 g.abs_move(x = 2*xl+5.0) 
 g.view(backend = 'matplotlib')#plot print path
 g.teardown()#ends the script (never comment out)

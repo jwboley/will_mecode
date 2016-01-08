@@ -34,7 +34,7 @@ yl = 3*2.54*10 #2" by 3" slide
 #################################################################
   
       
-n = 2 #number of lines for each unit meander  
+n = 4 #number of lines for each unit meander  
 def unit_meander(n,xl,p,v,ctr,q):
     g.feed(v)
     i = 0

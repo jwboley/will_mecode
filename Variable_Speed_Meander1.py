@@ -49,13 +49,13 @@ def unit_meander(n,xl,p,v,ctr,q):
             g.arc(x = 0, y = -p, radius = p/2, direction = c)
         i += 1
         
-p = 2.0 #pitch between meanders in mm
+p = 3.0 #pitch between meanders in mm
 N = 4 #total number of unit meanders
 d = 0.2 #inner diameter of nozzle in mm
-v0 = 0.01 #speed for first unit meander in mm/s
-vN = 0.05 #speed for Nth unit meander in mm/s
+v0 = 0.05 #speed for first unit meander in mm/s
+vN = 0.30 #speed for Nth unit meander in mm/s
 alpha = np.power((vN/v0),1.0/(N-1))
-tl = 5 #maximum allowable print time for the slowest trace in minutes
+tl = 3 #maximum allowable print time for the slowest trace in minutes
 xl = min([xl,tl*60*v0])
 
 def meta_meander(xl,N,n,p0,v0,alpha,d):

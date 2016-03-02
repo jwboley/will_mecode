@@ -23,6 +23,7 @@ g = G(
 
 margin = 0 #set up margins from edge of slide
 xl = 2*2.54*10 #2" by 3" slide
+xl = 15.0
 yl = 3*2.54*10 #2" by 3" slide
 
 
@@ -40,22 +41,22 @@ def unit_meander(n,xl,p,v,ctr,q):
     i = 0
     while i < n:
         if (ctr*n+i)%2 == 0:
-            c = 'CW'
-            g.abs_move(x = 2*xl - margin)
-            g.arc(x = 0, y = -p, radius = p/2, direction = c)
-        else:
             c = 'CCW'
+            g.abs_move(x = 2*xl - margin)
+            g.arc(x = 0, y = p, radius = p/2, direction = c)
+        else:
+            c = 'CW'
             g.abs_move(x = xl + margin)
-            g.arc(x = 0, y = -p, radius = p/2, direction = c)
+            g.arc(x = 0, y = p, radius = p/2, direction = c)
         i += 1
         
-p = 3.0 #pitch between meanders in mm
+p = 3.5 #pitch between meanders in mm
 N = 4 #total number of unit meanders
 d = 0.2 #inner diameter of nozzle in mm
-v0 = 0.05 #speed for first unit meander in mm/s
-vN = 0.35 #speed for Nth unit meander in mm/s
+v0 = 2 #speed for first unit meander in mm/s
+vN = 16 #speed for Nth unit meander in mm/s
 alpha = np.power((vN/v0),1.0/(N-1))
-tl = 3 #maximum allowable print time for the slowest trace in minutes
+tl = 10/60.0 #maximum allowable print time for the slowest trace in minutes
 xl = min([xl,tl*60*v0])
 
 def meta_meander(xl,N,n,p0,v0,alpha,d):

@@ -23,7 +23,7 @@ g = G(
 
 margin = 0 #set up margins from edge of slide
 xl = 2*2.54*10 #2" by 3" slide
-xl = 15.0
+xl = 30
 yl = 3*2.54*10 #2" by 3" slide
 
 
@@ -53,10 +53,10 @@ def unit_meander(n,xl,p,v,ctr,q):
 p = 3.5 #pitch between meanders in mm
 N = 4 #total number of unit meanders
 d = 0.2 #inner diameter of nozzle in mm
-v0 = 2 #speed for first unit meander in mm/s
-vN = 16 #speed for Nth unit meander in mm/s
+v0 = 0.1 #speed for first unit meander in mm/s
+vN = 0.4 #speed for Nth unit meander in mm/s
 alpha = np.power((vN/v0),1.0/(N-1))
-tl = 10/60.0 #maximum allowable print time for the slowest trace in minutes
+tl = 2 #maximum allowable print time for the slowest trace in minutes
 xl = min([xl,tl*60*v0])
 
 def meta_meander(xl,N,n,p0,v0,alpha,d):

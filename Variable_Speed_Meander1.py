@@ -14,7 +14,8 @@ g = G(
       ### When Editing On Minicaster ###
       outfile =r'C:\Users\User\Documents\GitHub\will_mecode\Variable_Speed_Meander.pgm',
       header=None,
-      footer=None,
+      footer=r'C:\Users\User\Documents\GitHub\will_mecode\casterfooter.txt',
+      aerotech_include=False,
       print_lines=False,
       )
       
@@ -35,7 +36,7 @@ yl = 3*2.54*10 #2" by 3" slide
 #################################################################
   
       
-n = 4 #number of lines for each unit meander  
+n = 3 #number of lines for each unit meander  
 def unit_meander(n,xl,p,v,ctr,q):
     g.feed(v)
     i = 0
@@ -53,11 +54,11 @@ def unit_meander(n,xl,p,v,ctr,q):
 p = 3.5 #pitch between meanders in mm
 N = 4 #total number of unit meanders
 d = 0.2 #inner diameter of nozzle in mm
-v0 = 0.1 #speed for first unit meander in mm/s
-vN = 0.4 #speed for Nth unit meander in mm/s
+v0 = 0.04 #speed for first unit meander in mm/s
+vN = 0.01 #speed for Nth unit meander in mm/s
 alpha = np.power((vN/v0),1.0/(N-1))
-tl = 2 #maximum allowable print time for the slowest trace in minutes
-xl = min([xl,tl*60*v0])
+tl = 10 #maximum allowable print time for the slowest trace in minutes
+xl = min([xl,tl*60*vN])
 
 def meta_meander(xl,N,n,p0,v0,alpha,d):
     j = 0

@@ -54,10 +54,10 @@ def unit_meander(n,xl,p,v,ctr,q):
 p = 3.5 #pitch between meanders in mm
 N = 4 #total number of unit meanders
 d = 0.2 #inner diameter of nozzle in mm
-v0 = 0.16 #speed for first unit meander in mm/s
-vN = 0.37 #speed for Nth unit meander in mm/s
+v0 = 0.9 #speed for first unit meander in mm/s
+vN = 1.8 #speed for Nth unit meander in mm/s
 alpha = np.power((vN/v0),1.0/(N-1))
-tl = 1.4 #maximum allowable print time for the slowest trace in minutes
+tl = 0.25 #maximum allowable print time for the slowest trace in minutes
 xl = min([xl,tl*60*v0])
 
 def meta_meander(xl,N,n,p0,v0,alpha,d):

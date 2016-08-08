@@ -15,8 +15,8 @@ pdwell = 1 #Dwell time for fluid despensing at start of print job
 g = G(
       direct_write = False,
       outfile = r'\\seasfs02.rc.fas.harvard.edu\jlewis_lab\User Files\Boley\Print_Routines\Variable_Meander.pgm',
-      header = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterheader.txt',
-      footer = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterfooter.txt',
+      #header = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterheader.txt',
+      #footer = r'C:\Users\Aerosol Jet\Documents\GitHub\will_mecode\mymegacasterfooter.txt',
       print_lines = False,
       aerotech_include=False,
       )

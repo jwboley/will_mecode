@@ -12,7 +12,7 @@ g = G(
       #header = r'/Users/jwboley/Documents/will_mecode/mymegacasterheader.txt',
       #footer = r'/Users/jwboley/Documents/will_mecode/mymegacasterfooter.txt',
       ### When Editing On Minicaster ###
-      outfile =r'C:\Users\User\Documents\GitHub\will_mecode\Variable_Speed_Meander.pgm',
+      outfile=r'C:\Users\User\Documents\GitHub\will_mecode\Variable_Speed_Meander1.pgm',
       header=None,
       footer=r'C:\Users\User\Documents\GitHub\will_mecode\casterfooter.txt',
       aerotech_include=False,
